@@ -3,7 +3,6 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import TransactionHistory from "./pages/TransactionHistory";
 
 import "./App.css"
 
