@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ export default function Dashboard() {
   const transfer = async () => {
     if (!receiverAccount || !amount) return alert("Enter account and amount");
     try {
-      const res = await axios.post("http://localhost:5000/api/bank/transfer", {
+      const res = await axios.post(`${API_BASE_URL}/api/bank/transfer`, {
         senderId: user._id,
         receiverAccount,
         amount: Number(amount),
@@ -36,7 +38,7 @@ export default function Dashboard() {
   const deposit = async () => {
     if (!depositAmount || depositAmount <= 0) return alert("Enter valid amount");
     try {
-      const res = await axios.post("http://localhost:5000/api/bank/deposit", {
+      const res = await axios.post(`${API_BASE_URL}/api/bank/deposit`, {
         userId: user._id,
         amount: Number(depositAmount),
       });

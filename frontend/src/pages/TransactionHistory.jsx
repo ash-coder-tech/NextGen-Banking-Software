@@ -2,6 +2,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 export default function TransactionHistory() {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ export default function TransactionHistory() {
     const fetchTransactions = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/bank/transactions/${storedUser.accountNumber}`
+          `${API_BASE_URL}/api/bank/transactions/${storedUser.accountNumber}`
         );
         console.log("Transactions fetched:", res.data); // debug
         setTransactions(res.data);

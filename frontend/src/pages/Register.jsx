@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 export default function Register() {
   const navigate = useNavigate();
@@ -8,7 +10,7 @@ export default function Register() {
 
   const register = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/register", form);
+      await axios.post(`${API_BASE_URL}/api/auth/register`, form);
       alert("Registered Successfully");
       navigate("/login");
     } catch (err) {
